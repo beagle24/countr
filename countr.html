@@ -2,15 +2,14 @@
 <html>
 <head>
     <title>Restaurant Log Form</title>
-    <!-- Updated the script to load the API asynchronously -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAktRq5twYNGOUDN_3MSgUI3c6x1CrNHFg&libraries=places&async=true"></script>
     <script>
         function initAutocomplete() {
             // Get the input field where users will type the location
             var input = document.getElementById('restaurant-input');
             
-            // Create a new autocomplete object and attach it to the input field
-            var autocomplete = new google.maps.places.Autocomplete(input);
+            // Create a new PlaceAutocompleteElement object and attach it to the input field
+            var autocomplete = new google.maps.places.PlaceAutocompleteElement(input);
             
             // Ensure the user can only pick valid places from the suggestions
             autocomplete.setFields(['place_id', 'geometry', 'name']);
@@ -19,7 +18,6 @@
             autocomplete.addListener('place_changed', function() {
                 var place = autocomplete.getPlace();
                 if (!place.geometry) {
-                    // User did not select a valid place
                     alert("Please select a valid restaurant from the list.");
                     return;
                 }
@@ -30,7 +28,6 @@
                 var latitude = place.geometry.location.lat();
                 var longitude = place.geometry.location.lng();
 
-                // Send the data to Google Apps Script
                 var data = {
                     "restaurantName": restaurantName,
                     "address": address,
@@ -38,7 +35,7 @@
                     "longitude": longitude
                 };
 
-                // Submit the form data via POST request to Google Apps Script
+                // Send the data to Google Apps Script
                 fetch('https://script.google.com/macros/s/AKfycbzsXMt4NVRchc_l-Mdra3NO43FJaI8VC9IalQk6imgyM2Q1kJPlm6c4S-1UTn0PKEEbBA/exec', {  
                     method: 'POST',
                     headers: {
@@ -58,9 +55,8 @@
             });
         }
 
-        // Use DOMContentLoaded to ensure the page is fully loaded before running the function
-        document.addEventListener('DOMContentLoaded', function() {
-            initAutocomplete();  // Call the function to start the process
+        window.addEventListener('DOMContentLoaded', (event) => {
+            initAutocomplete();
         });
     </script>
 </head>
@@ -77,4 +73,3 @@
     </form>
 </body>
 </html>
-
