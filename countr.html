@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Restaurant Log Form</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAktRq5twYNGOUDN_3MSgUI3c6x1CrNHFg&libraries=places"></script>
+    <!-- Updated the script to load the API asynchronously -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAktRq5twYNGOUDN_3MSgUI3c6x1CrNHFg&libraries=places&async=true"></script>
     <script>
         function initAutocomplete() {
             // Get the input field where users will type the location
@@ -38,7 +39,7 @@
                 };
 
                 // Submit the form data via POST request to Google Apps Script
-                fetch('https://script.google.com/macros/library/d/1WyWGPc1SA8iMAOWNHGu9hjPa_q4HsNWkLx2xsTCpfrS3b1kwuRs4WnJO/1', {  // Your Google Apps Script URL
+                fetch('https://script.google.com/macros/s/AKfycbzsXMt4NVRchc_l-Mdra3NO43FJaI8VC9IalQk6imgyM2Q1kJPlm6c4S-1UTn0PKEEbBA/exec', {  
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -57,10 +58,9 @@
             });
         }
 
-        // Prevent form submission and handle it via JS
-        document.getElementById('restaurant-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission behavior
-            initAutocomplete(); // Call the function to start the process
+        // Use DOMContentLoaded to ensure the page is fully loaded before running the function
+        document.addEventListener('DOMContentLoaded', function() {
+            initAutocomplete();  // Call the function to start the process
         });
     </script>
 </head>
@@ -77,3 +77,4 @@
     </form>
 </body>
 </html>
+
