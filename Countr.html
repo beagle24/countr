@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Log Form</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAktRq5twYNGOUDN_3MSgUI3c6x1CrNHFg&libraries=places"></script>
+    <script>
+        function initAutocomplete() {
+            // Get the input field where users will type the location
+            var input = document.getElementById('restaurant-input');
+            
+            // Create a new autocomplete object and attach it to the input field
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            
+            // Ensure the user can only pick valid places from the suggestions
+            autocomplete.setFields(['place_id', 'geometry', 'name']);
+            
+            // Get the place details when a user selects a place
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    // User did not select a valid place
+                    alert("Please select a valid restaurant from the list.");
+                    return;
+                }
+                // If the place is valid, display the location data (optional)
+                console.log('Selected Place: ', place.name);
+                console.log('Address: ', place.formatted_address);
+                console.log('Latitude: ', place.geometry.location.lat());
+                console.log('Longitude: ', place.geometry.location.lng());
+            });
+        }
+    </script>
+</head>
+<body onload="initAutocomplete()">
+    <h3>Log a Restaurant Visit</h3>
+    <form action="YOUR_SERVER_SIDE_SCRIPT" method="POST">
+        <label for="restaurant-input">Restaurant Name/Location</label>
+        <input id="restaurant-input" type="text" name="restaurant" placeholder="Start typing the restaurant name" required>
+        <br><br>
+        <label for="restaurant-location">Restaurant Location (optional, for reference)</label>
+        <input id="restaurant-location" type="text" name="location" placeholder="Address (optional)">
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
