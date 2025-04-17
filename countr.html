@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Restaurant Log Form</title>
-    <!-- Load Google Maps API with async=true for better performance -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAktRq5twYNGOUDN_3MSgUI3c6x1CrNHFg&libraries=places&async=true"></script>
     <script>
         function initAutocomplete() {
@@ -11,7 +10,7 @@
             
             // Create a new PlaceAutocompleteElement object and attach it to the input field
             var autocomplete = new google.maps.places.PlaceAutocompleteElement(input);
-
+            
             // Ensure the user can only pick valid places from the suggestions
             autocomplete.setFields(['place_id', 'geometry', 'name']);
             
