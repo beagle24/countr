@@ -36,22 +36,23 @@
                 };
 
                 // Send the data to Google Apps Script
-                fetch('https://script.google.com/macros/s/AKfycbzsXMt4NVRchc_l-Mdra3NO43FJaI8VC9IalQk6imgyM2Q1kJPlm6c4S-1UTn0PKEEbBA/exec', {  
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                    alert("Restaurant logged successfully!");
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    alert("There was an error logging the restaurant.");
-                });
+                fetch('https://script.google.com/macros/s/AKfycbzsXMt4NVRchc_l-Mdra3NO43FJaI8VC9IalQk6imgyM2Q1kJPlm6c4S-1UTn0PKEEbBA/exec', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+})
+.then(response => response.json()) // Ensure you're parsing the response correctly
+.then(data => {
+    console.log('Success:', data);
+    alert("Restaurant logged successfully!");
+})
+.catch((error) => {
+    console.error('Error:', error);
+    alert("There was an error logging the restaurant.");
+});
+
             });
         }
 
