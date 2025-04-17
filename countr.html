@@ -8,9 +8,9 @@
             // Get the input field where users will type the location
             var input = document.getElementById('restaurant-input');
             
-            // Create a new autocomplete object and attach it to the input field
+            // Create a new google.maps.places.Autocomplete object and attach it to the input field
             var autocomplete = new google.maps.places.Autocomplete(input);
-            
+
             // Ensure the user can only pick valid places from the suggestions
             autocomplete.setFields(['place_id', 'geometry', 'name']);
             
@@ -55,6 +55,7 @@
             });
         }
 
+        // Initialize autocomplete when the document is ready
         window.addEventListener('DOMContentLoaded', (event) => {
             initAutocomplete();
         });
