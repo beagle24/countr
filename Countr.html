@@ -38,36 +38,4 @@
                 };
 
                 // Submit the form data via POST request to Google Apps Script
-                fetch('https://script.google.com/macros/s/AKfycbzsXMt4NVRchc_l-Mdra3NO43FJaI8VC9IalQk6imgyM2Q1kJPlm6c4S-1UTn0PKEEbBA/exec', {  // Replace with your actual Apps Script URL
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                    alert("Restaurant logged successfully!");
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    alert("There was an error logging the restaurant.");
-                });
-            });
-        }
-    </script>
-</head>
-<body onload="initAutocomplete()">
-    <h3>Log a Restaurant Visit</h3>
-    <form id="restaurant-form">
-        <label for="restaurant-input">Restaurant Name/Location</label>
-        <input id="restaurant-input" type="text" name="restaurant" placeholder="Start typing the restaurant name" required>
-        <br><br>
-        <label for="restaurant-location">Restaurant Location (optional, for reference)</label>
-        <input id="restaurant-location" type="text" name="location" placeholder="Address (optional)">
-        <br><br>
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html>
+                fetch('https://script.google.com/macros/s/AKfycbzsXMt4NVRchc_l-Mdra3NO43FJaI8VC9IalQk6imgyM2Q1kJPlm_
