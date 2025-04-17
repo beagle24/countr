@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Restaurant Log Form</title>
+    <!-- Load Google Maps API with async=true for better performance -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAktRq5twYNGOUDN_3MSgUI3c6x1CrNHFg&libraries=places&async=true"></script>
     <script>
         function initAutocomplete() {
@@ -10,7 +11,7 @@
             
             // Create a new PlaceAutocompleteElement object and attach it to the input field
             var autocomplete = new google.maps.places.PlaceAutocompleteElement(input);
-            
+
             // Ensure the user can only pick valid places from the suggestions
             autocomplete.setFields(['place_id', 'geometry', 'name']);
             
@@ -35,7 +36,7 @@
                     "longitude": longitude
                 };
 
-                // Send the data to Google Apps Script (using the correct URL)
+                // Send the data to Google Apps Script
                 fetch('https://script.google.com/macros/s/AKfycbzsXMt4NVRchc_l-Mdra3NO43FJaI8VC9IalQk6imgyM2Q1kJPlm6c4S-1UTn0PKEEbBA/exec', {  
                     method: 'POST',
                     headers: {
